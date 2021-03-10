@@ -6,3 +6,4 @@ initializeApp({
 
 export * from './User/functions'
 export * from './Hackathon/functions'
+export * from './Prize/functions'
