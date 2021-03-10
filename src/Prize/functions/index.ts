@@ -1,1 +1,1 @@
-export { default } from './prizeDeleted'
+export { default as prizeDeleted } from './prizeDeleted'
