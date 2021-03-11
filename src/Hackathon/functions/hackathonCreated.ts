@@ -8,6 +8,7 @@ export default functions.firestore
 	.onCreate(async snapshot => {
 		try {
 			const hackathon = hackathonFromSnapshot(snapshot)
+			if (!hackathon) throw new Error('Hackathon does not exist')
 
 			await index.saveObject({
 				objectID: hackathon.id,

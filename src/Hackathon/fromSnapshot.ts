@@ -1,6 +1,8 @@
 import Hackathon from '.'
 
 const hackathonFromSnapshot = (snapshot: FirebaseFirestore.DocumentSnapshot) =>
-	({ id: snapshot.id, ...snapshot.data() } as Hackathon)
+	snapshot.exists
+		? ({ id: snapshot.id, ...snapshot.data() } as Hackathon)
+		: null
 
 export default hackathonFromSnapshot
