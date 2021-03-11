@@ -9,6 +9,7 @@ const { HttpsError, onCall } = functions.https
 export default onCall(async (id, { auth }) => {
 	try {
 		if (!auth) throw new HttpsError('unauthenticated', 'Not logged in')
+
 		if (typeof id !== 'string')
 			throw new HttpsError('invalid-argument', 'Invalid ID')
 
@@ -18,7 +19,8 @@ export default onCall(async (id, { auth }) => {
 		const { client_secret } = await stripe.paymentIntents.create({
 			payment_method_types: ['card'],
 			currency: 'usd',
-			amount: bit.cost
+			amount: bit.cost,
+			metadata: { user: auth.uid, bit: id }
 		})
 
 		if (!client_secret)
@@ -26,6 +28,7 @@ export default onCall(async (id, { auth }) => {
 
 		return client_secret
 	} catch (error) {
+		console.error(error)
 		throw toHttpsError(error)
 	}
 })
