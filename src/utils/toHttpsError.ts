@@ -1,9 +1,14 @@
 import * as functions from 'firebase-functions'
 
+type UnknownError = Record<string, unknown> | null | undefined
+type ValidError = { message: string }
+
 const { HttpsError } = functions.https
 
 const getMessage = (error: unknown) =>
-	error instanceof Error ? error.message : 'An unknown error occurred'
+	typeof (error as UnknownError)?.message === 'string'
+		? (error as ValidError).message
+		: 'An unknown error occurred'
 
 const toHttpsError = (error: unknown) =>
 	error instanceof HttpsError
