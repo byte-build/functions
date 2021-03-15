@@ -4,7 +4,7 @@ export default interface Hackathon {
 	subtitle: string
 	bits: number
 	participants: number
-	skill: HackathonSkill | null
+	skill: HackathonSkill[]
 	tags: string[]
 	time: HackathonTime
 	admins: Record<string, HackathonAdmin>
