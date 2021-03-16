@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions'
 
 import getBit from '../get'
 import stripe from '../../utils/stripe'
-import toHttpsError from '../../utils/toHttpsError'
+import toHttpsError from '../../utils/error/toHttps'
 
 const { HttpsError, onCall } = functions.https
 

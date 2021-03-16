@@ -1,8 +1,8 @@
 import { initializeApp } from 'firebase-admin'
 
-initializeApp({
-	storageBucket: 'byte-build.appspot.com'
-})
+import { STORAGE_BUCKET } from './utils/constants'
+
+initializeApp({ storageBucket: STORAGE_BUCKET })
 
 export * from './User/functions'
 export * from './Hackathon/functions'
