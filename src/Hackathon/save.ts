@@ -1,8 +1,8 @@
 import Hackathon from '.'
-import index from '../utils/search'
+import search from '../utils/search'
 
 const saveHackathon = async (hackathon: Hackathon) => {
-	await index.saveObject({
+	await search.initIndex('hackathons').saveObject({
 		objectID: hackathon.id,
 		name: hackathon.name,
 		subtitle: hackathon.subtitle,
